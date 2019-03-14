@@ -1,0 +1,11 @@
+easy_admin:
+    site_name: 'vendoLibros'
+    design:
+        brand_color: '#582F26'
+
+    entities:
+        # change the following to the namespaces of your own entities
+        - AppBundle\Entity\Usuario
+        - AppBundle\Entity\Categoria
+        - AppBundle\Entity\Material
+        - AppBundle\Entity\Mensaje

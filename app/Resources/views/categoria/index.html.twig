@@ -1,0 +1,41 @@
+{% extends 'FOSUserBundle::layout.html.twig' %}
+
+{% block fos_user_content %}
+    <h1>Categorias list</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nombre</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for categoria in categorias %}
+
+
+            <tr>
+                <td>{{ categoria.id }}</td>
+                <td>{{ categoria.nombre }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('categoria_edit', { 'id': categoria.id }) }}">edit</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('subcategoria_index')}}?id={{ categoria.id }}">Subcategories</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('categoria_new') }}">Create a new categorium</a>
+        </li>
+    </ul>
+{% endblock %}

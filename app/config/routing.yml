@@ -1,0 +1,20 @@
+app:
+    resource: '@AppBundle/Controller/'
+    prefix:   /{_locale}
+    requirements:
+      _locale: en|es
+    defaults: { _locale: en}
+
+fos_user:
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+    prefix:   /{_locale}
+
+fos_user_security_login:
+    resource: "@FOSUserBundle/Resources/config/routing/security.xml"
+    prefix:   /{_locale}
+
+easy_admin_bundle:
+    resource: "@EasyAdminBundle/Controller/AdminController.php"
+    type:     annotation
+    prefix:   /god
+

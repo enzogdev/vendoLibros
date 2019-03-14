@@ -1,0 +1,18 @@
+{% extends 'FOSUserBundle::layout.html.twig' %}
+
+{% block fos_user_content %}
+    <h1>Categorium creation</h1>
+
+    {{ form_start(form) }}
+    {{ form_row(form.parent,{ 'attr': {'class': "form-control", 'placeholder': 'form.parent'|trans}, 'label':false }) }}
+        {{ form_widget(form) }}
+        <input type="submit" value="Create" />
+
+    {{ form_end(form) }}
+
+    <ul>
+        <li>
+            <a href="{{ path('categoria_index') }}">Back to the list</a>
+        </li>
+    </ul>
+{% endblock %}

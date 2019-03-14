@@ -1,0 +1,16 @@
+{% extends 'FOSUserBundle::layout.html.twig' %}
+
+{% block fos_user_content %}
+    <a  class="back-button btn btn-secondary" href="{{ path('mensaje_index') }}"><i class="fas fa-chevron-left"></i></a>
+<h1 class=" user-chat">{{ userChat }}</h1>
+    {% for mensaje in mensajes%}
+        {% if user == mensaje.usuarioEmisor %}
+        <li class="msg-emisor"><span>{{ mensaje.mensaje }}</span> <br></li>
+            <br>
+        {% else %}
+        <li class="msg-receptor"><span>{{ mensaje.mensaje }}</span> <br></li>
+
+        {% endif %}
+    {% endfor %}
+    {{ include('mensaje/new.html.twig') }}
+{% endblock %}

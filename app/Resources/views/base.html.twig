@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% set route = app.request.attributes.get('_route') %}
+{% set route_params = app.request.attributes.get('_route_params') %}
+{% set params = route_params|merge(app.request.query.all) %}
+
+
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        {% block stylesheets %}
+            <!-- Bootstrap -->
+            <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+            <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+            <!-- Custom stlylesheet -->
+            <link type="text/css" rel="stylesheet" href="{{ asset('css/estilos.css') }}">
+            <link type="text/css" rel="stylesheet" href="{{ asset('css/dropzone.min.css') }}">
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        {% endblock %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}">
+    </head>
+    <body>
+    {% block nav %}
+        <div class="navbar-content">
+            <span class="logo"><img src="{{ asset('images/bg/logo.png') }}"> <br>vendoLibros</span>
+            <nav class="group-links">
+                <a class="nav-link active" href="{{ path('material_index') }}"><i class="fa fa-search"></i></a>
+                {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+
+                    {% if is_granted("ROLE_ADMIN") == true %}
+                        <a class="nav-link " href="{{ path('categoria_index') }}">{{ 'form.categoria'|trans }}</a>
+                    {% endif %}
+                    <div class="profile-menu-content">
+                    <a href="{{ path('fos_user_profile_show') }}">
+                        {% if  app.user.imagen  %}
+                            <img class="mini-profile" src="{{ asset('images/profiles/') }}{{ app.user.imagen }}" alt="">
+                        {% else %}
+                            <img class="mini-profile" src="{{ asset('images/profiles/profile.png') }}" alt="">
+                        {% endif %}
+                        <div class="profile-menu">{{ 'form.hola'|trans }} {{ app.user.username }}!</div>
+                    </a>
+                    </div>
+                    <a class="nav-link" href="{{ path('mensaje_index') }}">{{ 'form.mensajes'|trans }}</a>
+                    <a class="nav-link" href="{{ path('material_new') }}">{{ 'form.nuevo'|trans }}</a>
+                    <a class="nav-link" href="{{ path('fos_user_security_logout') }}">{{ 'form.salir'|trans }}</a>
+                {% else %}
+                    <a class="nav-link" href="{{ path('fos_user_security_login') }}">{{ 'form.entrar'|trans }}</a>
+                    <a class="nav-link" href="{{ path('fos_user_registration_register') }}">{{ 'form.alta'|trans }}</a>
+                {% endif %}
+                <a class="nav-link " href="{{ path('about_us') }}">{{ 'form.nosotros'|trans }}</a>
+                <div class="languages">
+                    {% for locale in locales%}
+
+                            <a href="{{ path(route, params|merge({ _locale: locale })) }}">
+                                <img src="{{ asset('images/flags/' ~ locale ~ '.png') }}" alt="{{ locale }}">
+                            </a>
+
+                    {% endfor %}
+                </div>
+            </nav>
+        </div>
+    {% endblock %}
+    {% block body %}
+
+    {% endblock %}
+        {% block javascripts %}
+
+            {#<script type="text/javascript" src="{{ asset('application/js/bootstrap.min.js') }}"></script>#}
+            {#<script type="text/javascript" src="{{ asset('application/js/owl.carousel.min.js') }}"></script>#}
+            {#<script type="text/javascript" src="{{ asset('application/js/jquery.magnific-popup.js') }}"></script>#}
+            {#<script type="text/javascript" src="{{ asset('application/js/main.js') }}"></script>#}
+            {#<script type="text/javascript" src="{{ asset('application/js/dropzone.js') }}"></script>#}
+
+            {#<script>#}
+                {#// $(document).ready(function () {#}
+                {#//     $('.nav-link').on('click', function () {#}
+                {#//         $('.nav-link').removeClass('active');#}
+                {#//         $(this).addClass('active');#}
+                {#//     })#}
+                {#// });#}
+            {#</script>#}
+        {% endblock %}
+    </body>
+</html>

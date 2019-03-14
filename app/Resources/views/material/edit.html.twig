@@ -1,0 +1,58 @@
+{% extends 'FOSUserBundle::layout.html.twig' %}
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block fos_user_content %}
+
+    <a class="back-button btn btn-secondary" href="{{ path('material_index') }}"><i class="fas fa-chevron-left"></i></a>
+    <h1>Material edit</h1>
+    {{ form_start(edit_form) }}
+
+    {% if material.temas != '' %}
+        <div class="form-group">
+            {{ form_row(edit_form.temas,{ 'attr': {'class': "form-control", 'placeholder': 'form.temas'|trans}, 'label':'form.temas'|trans }) }}
+        </div>
+        {% else %}
+        <div class="hidden">
+            {{ form_row(edit_form.temas,{ 'attr': {'class': "form-control", 'placeholder': 'form.temas'|trans}, 'label':'form.temas'|trans }) }}
+        </div>
+    {% endif %}
+
+
+    {% if material.titulo != '' %}
+        <div class="form-group">
+            {{ form_row(edit_form.titulo,{ 'attr': {'class': "form-control"}, 'label':'form.titulo'|trans }) }}
+        </div>
+    {% else %}
+        <div class="hidden">
+            {{ form_row(edit_form.titulo,{ 'attr': {'class': "form-control"}, 'label':'form.titulo'|trans }) }}
+        </div>
+    {% endif %}
+
+    {% if  material.isbn != '' %}
+        <div class="form-group">
+            {{ form_row(edit_form.isbn,{ 'attr': {'class': "form-control", 'pattern': "(?:(?=.{17}$)97[89][ -](?:[0-9]+[ -]){2}[0-9]+[ -][0-9]|97[89][0-9]{10}|(?=.{13}$)(?:[0-9]+[ -]){2}[0-9]+[ -][0-9Xx]|[0-9]{9}[0-9Xx])"}, 'label': 'form.isbn'|trans }) }}
+        </div>
+    {% else %}
+        <div class="hidden">
+            {{ form_row(edit_form.isbn,{ 'attr': {'class': "form-control", 'pattern': "(?:(?=.{17}$)97[89][ -](?:[0-9]+[ -]){2}[0-9]+[ -][0-9]|97[89][0-9]{10}|(?=.{13}$)(?:[0-9]+[ -]){2}[0-9]+[ -][0-9Xx]|[0-9]{9}[0-9Xx])"}, 'label': 'form.isbn'|trans }) }}
+        </div>
+    {% endif %}
+
+    <div class="form-group">
+        {{ form_row(edit_form.descripcion,{ 'attr': {'class': "form-control"}, 'label':'form.descripcion'|trans }) }}
+    </div>
+    <div class="form-group">
+        {{ form_row(edit_form.precio,{ 'attr': {'class': "form-control"}, 'label':'form.precio'|trans }) }}
+        {#^[0-9]{4}([,.][0-9]{1,2})?$#}
+    </div>
+    <div class="form-group">
+        {{ form_row(edit_form.imagenes,{ 'attr': {'class': "form-control"}, 'label':'form.imagenes'|trans }) }}
+    </div>
+        <input  class="btn btn-secondary" type="submit" value="{{ 'form.actualizar'|trans }}" />
+    {{ form_end(edit_form) }}
+
+            {{ form_start(delete_form) }}
+                <input class="btn btn-danger" style="border-radius: 10px; margin-top: 10px" type="submit" value="{{ 'form.borrar'|trans }}">
+            {{ form_end(delete_form) }}
+
+{% endblock %}

@@ -1,0 +1,88 @@
+{% extends 'FOSUserBundle::layout.html.twig' %}
+{% trans_default_domain 'FOSUserBundle' %}
+{% block fos_user_content %}
+
+    <a class="back-button btn btn-secondary" href="{{ path('material_index') }}"><i class="fas fa-chevron-left"></i></a>
+    <h1>Material creation</h1>
+
+    {{ form_start(form) }}
+<div class="form-group">
+    <div id="container">
+        <div class="inner-container">
+            <div class="toggle">
+                <p>{{ 'form.libro'|trans }}</p>
+            </div>
+            <div class="toggle">
+                <p>{{ 'form.apuntes'|trans }}</p>
+            </div>
+        </div>
+        <div class="inner-container" id='toggle-container'>
+            <div class="toggle">
+                <p>{{ 'form.libro'|trans }}</p>
+            </div>
+            <div class="toggle">
+                <p>{{ 'form.apuntes'|trans }}</p>
+            </div>
+        </div>
+    </div>
+</div>
+    <div class="form-group">
+        {{ form_row(form.titulo,{ 'attr': {'class': "form-control", 'placeholder': 'form.titulo'|trans}, 'label':false }) }}
+    </div>
+    <div class="form-group">
+        {{ form_row(form.isbn,{ 'attr': {'class': "form-control", 'placeholder': 'form.isbn'|trans, 'pattern': "(?:(?=.{17}$)97[89][ -](?:[0-9]+[ -]){2}[0-9]+[ -][0-9]|97[89][0-9]{10}|(?=.{13}$)(?:[0-9]+[ -]){2}[0-9]+[ -][0-9Xx]|[0-9]{9}[0-9Xx])"}, 'label':false }) }}
+    </div>
+    <div class="form-group">
+        {{ form_row(form.temas,{ 'attr': {'class': "form-control", 'placeholder': 'form.temas'|trans}, 'label':false }) }}
+    </div>
+    <div class="form-group">
+        {{ form_row(form.descripcion,{ 'attr': {'class': "form-control", 'placeholder': 'form.descripcion'|trans}, 'label':false }) }}
+    </div>
+    <div class="form-group">
+        {{ form_row(form.precio,{ 'attr': {'class': "form-control", 'placeholder': 'form.precio'|trans}, 'label':false }) }}
+        {#^[0-9]{4}([,.][0-9]{1,2})?$#}
+    </div>
+    <div class="form-group">
+        {{ form_row(form.imagenes,{ 'attr': {'class': "form-control", 'placeholder': 'form.imagenes'|trans}, 'label':false }) }}
+    </div>
+    <div class="form-group">
+        <label for="tag[]">{{ 'form.selectCat'| trans }}</label>
+        <select name="tag[]" id="tag" multiple class="form-control" required>
+            {% for categoria in categorias %}
+                <option value="{{ categoria.id }}">{{ categoria.nombre }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <script>
+        $('#appbundle_material_titulo').attr('type','hidden')
+        $('#appbundle_material_isbn').attr('type','hidden')
+        $('#appbundle_material_temas').attr('type','text').attr('required','true')
+        var toggle = document.getElementById('container');
+        var toggleContainer = document.getElementById('toggle-container');
+        var toggleNumber;
+
+
+        toggle.addEventListener('click', function() {
+            toggleNumber = !toggleNumber;
+
+            if (toggleNumber) {
+                toggleContainer.style.clipPath = 'inset(0 0 0 50%)';
+                toggleContainer.style.backgroundColor = 'dodgerblue';
+                $('#appbundle_material_titulo').attr('type','text').attr('required','true')
+                $('#appbundle_material_isbn').attr('type','text').attr('required','true')
+                $('#appbundle_material_temas').attr('type','hidden').attr('required','false')
+
+            } else {
+                toggleContainer.style.clipPath = 'inset(0 50% 0 0)';
+                toggleContainer.style.backgroundColor = 'dodgerblue';
+                $('#appbundle_material_titulo').attr('type','hidden')
+                $('#appbundle_material_isbn').attr('type','hidden')
+                $('#appbundle_material_temas').attr('type','text').attr('required','true')
+            }
+            console.log(toggleNumber)
+        });
+    </script>
+
+    <input type="submit" class="btn btn-secondary" value="Create" />
+    {{ form_end(form) }}
+{% endblock %}

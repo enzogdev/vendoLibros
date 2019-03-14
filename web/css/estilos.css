@@ -1,0 +1,591 @@
+/*
+Paleta de colores:
+#A6A2A7 Light Slate Gray
+#2A291F Black
+#927E78 Gray
+#654031 Dark Olive Green
+#582F26 Dark Olive Green
+*/
+
+/*GENERALES*/
+
+body{
+    background-color: ghostwhite;
+}
+
+.btn-secondary{
+    border-radius: 8px;
+    background-color:#927E78 ;
+}
+.btn-secondary:hover{
+    background-color:#654031 ;
+}
+a{
+    color:#582F26;
+}
+a:hover{
+    color:#654031;
+
+}
+/*/GENERALES*/
+
+/*MENU*/
+
+.navbar-content{
+    height: 100vh;
+    width: 197px;
+    background-image: url("../images/bg/bg2.jpg") ;
+    background-size: cover;
+    font-weight: bold;
+    position: fixed;
+
+}
+.group-links{
+    padding-top: 30px;
+    position: absolute;
+    left: 95px;
+    text-align: right;
+}
+.nav-link{
+    position: relative;
+    border-radius: 10px 0px 0px 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    color: white;
+}
+.nav-link:hover:not(.active){
+    color: ghostwhite;
+    background-color: rgba(248,248,255,0.2);
+}
+.separator-menu {
+    min-height: calc(100vh - 600px);
+}
+.active{
+    color:#582F26;
+    background-color: ghostwhite;
+}
+.active:hover{
+    color:#582F26;
+}
+.active::after{
+    content: '';
+    min-width: 10px;
+    min-height: 10px;
+    position: absolute;
+    right: 0px;
+    bottom: -10px;
+    border-radius: 100%;
+    box-shadow: 5px -5px 0px 0px ghostwhite;
+}
+.active::before{
+    content: '';
+    min-width: 10px;
+    min-height: 10px;
+    position: absolute;
+    right: 0px;
+    top: -10px;
+    border-radius: 100%;
+    box-shadow: 5px 5px 0px 0px ghostwhite;
+}
+
+.logo{
+    position: absolute;
+    color: ghostwhite;
+    font-size:1em ;
+    bottom:60px;
+    left: 50px;
+}
+.logo img{
+    width: 90px;
+}
+/*---ESTILOS DEL NAV---*/
+
+/*ESTILOS CONTENEDORES USUARIOS*/
+.user-form {
+    width: 350px;
+    position: absolute;
+    top: 20vh;
+    left: 400px;
+}
+.edit-user-form{
+    text-align: right;
+}
+
+
+
+
+
+#container {
+    width: 160px;
+    height: 36px;
+    margin: auto;
+    position: relative;
+    border-radius: 6px;
+    overflow: hidden;
+    user-select: none;
+    cursor: pointer;
+}
+
+.inner-container {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: inherit;
+    height: inherit;
+    text-transform: uppercase;
+    font-size: .6em;
+    letter-spacing: .2em;
+}
+
+.inner-container:first-child {
+    background: #e9e9e9;
+    color: #a9a9a9;
+}
+
+.inner-container:nth-child(2) {
+    background: dodgerblue;
+    color: white;
+    clip-path: inset(0 50% 0 0);
+    transition: .3s cubic-bezier(0,0,0,1);
+}
+
+.toggle {
+    width: 50%;
+    position: absolute;
+    height: inherit;
+    display: flex;
+    box-sizing: border-box;
+}
+
+.toggle p {
+    margin: auto;
+}
+
+.toggle:nth-child(1) {
+    right: 0;
+}
+
+.product-card{
+    width: 240px;
+    height: 400px;
+    border-radius: 15px;
+}
+.product-card img{
+    object-fit: cover;
+    width: 240px;
+    height: 130px;
+    border-radius: 15px 15px 0px 0px;
+}
+.product-card .description{
+    width: 240px;
+    height: 270px;
+    border-radius: 0px 0px 15px 15px;
+    background-color: #dfdfe5;
+
+}
+.message-product{
+    position: absolute;
+    left: 85px;
+    top: 155px;
+    color: ghostwhite;
+    width: 64px;
+    height: 64px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #A6A2A7;
+    border-radius: 100%;
+}
+.description-product{
+    padding: 15px;
+}
+.description-product .fecha{
+    position: absolute;
+    top: 425px;
+    left: 160px;
+    font-size: 0.8em;
+    text-align: right;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.product{
+    height: 500px;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+}
+.product img{
+    object-fit: cover;
+    height: 250px;
+    border-radius: 15px 15px 0px 0px;
+    width: 100%;
+}
+h3{
+    padding: 12px;
+    text-align: center;
+}
+.descripcion{
+    padding: 12px;
+    width: 100%;
+    max-height: 5rem;
+    overflow: hidden;
+    background: linear-gradient(to bottom, rgba(0,0,0,1) 30%, rgba(0,0,0,1) 61%, rgba(0,0,0,1) 78%, rgba(232,232,232,1) 98%, rgba(255,255,255,1) 100%);
+    -webkit-background-clip: text;
+    color: transparent;
+}
+.product{
+    background-color: white;
+    margin-bottom: 40px;
+}
+.price{
+    position: absolute;
+    right: 30px;
+    bottom: 35px;
+    font-size: 2em;
+    padding: 12px;
+}
+.price::after{
+    content: '€'
+}
+#user-thumbnail{
+    margin-bottom: 12px;
+    width: 64px;
+    height: 64px;
+    border-radius: 100%;
+}
+.user-name{
+
+    font-size: 1.3em;
+    margin-left: 10px;
+}
+.user{
+    position: absolute;
+    left: 30px;
+    bottom: 40px;
+}
+.message-link{
+    color: white;
+    position: absolute;
+    right: 45%;
+    font-size: 2em;
+    top: 220px;
+    background-color: burlywood;
+    border-radius: 100%;
+    width: 50px;
+    height: 50px;
+    text-align: center;
+}
+.container-products{
+    width: calc(100vw - 200px - 197px - 20px);
+}
+
+.categorias{
+    position:absolute;
+    top: -170px;
+    width: 200%;
+}
+.tag{
+    list-style: none;
+    margin-top:3px;
+    border-radius: 15px;
+    padding: 5px;
+    padding-left: 15px;
+    background-color: ghostwhite;
+    box-shadow: 0px 9px 22px -7px rgba(0,0,0,0.25);
+}
+.material-user{
+    width: 100vw;
+}
+.msg-emisor,.msg-receptor{
+    list-style: none;
+}
+.msg-emisor{
+    align-content: right;
+}
+.msg-emisor span{
+    max-width: 90%;
+    background-color: #654031;
+    color: white;
+    text-align: right;
+    padding: 5px;
+    border-radius: 10px;
+    float:right;
+}
+/*.msg-emisor::after {*/
+    /*content: '';*/
+    /*min-height: 10px;*/
+    /*min-width: 10px;*/
+    /*border: 1px solid red;*/
+    /*position: absolute;*/
+    /*right: calc(0% - 5px);*/
+/*}*/
+.msg-receptor span{
+    max-width: 90%;
+    background-color: burlywood;
+    color: white;
+    text-align: left;
+    padding: 5px;
+    border-radius: 10px;
+}
+
+.languages {
+    display: block;
+    position: fixed;
+    bottom: 20px;
+    left: 40px;
+
+
+}
+.languages *{
+    margin-right: 10px;
+}
+.mini-profile{
+    height: 64px;
+    width: 64px;
+    border-radius: 100%;
+
+}
+.profile-menu{
+    text-align: center;
+    color: white;
+    position: relative;
+    bottom: 0%;
+    margin-top: 10px;
+
+}
+.profile-menu-content{
+    position: fixed;
+    bottom: 170px;
+    left: 60px;
+}
+
+.categorias-container{
+    width: 200px;
+    padding: 20px;
+    padding-top: 200px;
+    background-color: red;
+    height: 100vh;
+    position: fixed;
+    left: 197px;
+    top: 0px;
+    background-color: #dfdfe5;
+    box-shadow: 15px 0px 22px -7px rgba(49,49,51,1);
+    box-shadow: inset 10px 0px 22px -7px rgba(49,49,51,0.8);
+
+    clip-path: polygon(100% 100%, 0% 100%, 0% 90px, 70px 160px, 100% 90px);
+}
+.categorias-container::after{
+    content: '';
+    position: fixed;
+    background-color: #654031;
+    min-width: 100px;
+    min-height: 150px;
+    top: 90px;
+    left: 197px;
+    clip-path: polygon(0 0, 0 110px, 70px 70px);
+    box-shadow: inset 15px -70px 22px -7px rgba(49,49,51,1);
+
+}
+.categorias-container h2{
+    margin-bottom: 20px;
+    color: #654031;
+}
+.filter{
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.cabecera{
+    position: relative;
+    top: -80px;
+}
+.contacts-list{
+    list-style: none;
+
+}
+.contacts-list a{
+    text-decoration: none;
+}
+.contact-chat{
+    background-color: #c6c6cc;
+    color: white;
+    font-weight: 500;
+    padding: 15px;
+    padding-bottom: 10px;
+    width: 200px;
+    border-radius: 15px;
+}
+.contact-chat:hover{
+    background-color: #949499;
+}
+.user-chat{
+    text-align: center;
+    background-color: #949499;
+    color: white;
+    font-weight: 500;
+    padding: 15px;
+    padding-bottom: 10px;
+    border-radius: 15px;
+}
+
+.mensaje-block *{
+
+}
+.mensaje-box{
+    margin-top: 20px;
+    border-radius: 20px 0px 0px 20px;
+    width: 310px;
+}
+.mensaje-submit{
+    margin-top: 20px;
+    border-radius: 20px;
+    text-align: center;
+}
+.back-button{
+    text-align: center;
+    line-height: 30px;
+    height: 46px;
+    width: 46px;
+    margin-bottom: 10px;
+    border-radius: 100%;
+}
+
+
+
+
+.profile-content{
+    width: calc( 100vh - 197px);
+}
+.profile-img{
+    border-radius: 100%;
+    height: 200px;
+    width: 200px;
+}
+.profile-principal{
+    width: 350px;
+    position: fixed;
+    top: 80px;
+    left: 250px;
+}
+
+.profile-material{
+    position: absolute;
+    top: -100px;
+    left:210px;
+    width: 700px;
+}
+.image{
+    padding: 5px;
+}
+.profile-img{
+    display: block;
+    margin: auto;
+}
+
+.username{
+    padding: 5px;
+    text-align: center;
+    font-size: 1.6em;
+    font-weight: 500;
+    color: #654031;
+}
+.edit-profile{
+    position: absolute;
+    left: calc(50% - 32px);
+    padding: 5px;
+    padding-top: 0px;
+    text-align: center;
+}
+#edit-profile-link{
+    height: 64px;
+    width: 64px;
+    border-radius: 100%;
+    padding-top: 17px;
+}
+.table-profile{
+    display: flex;
+    justify-content: center;
+}
+.user-con{
+    position: absolute;
+    bottom: 5px;
+}
+
+.imagenes-producto{
+    position: absolute;
+    left: 0px;
+    width: 400px;
+    float: left;
+}
+.contenido-producto{
+    position: fixed;
+    left: 850px;
+    width: 400px;
+}
+.producto-vista{
+    width: calc( 100vh);
+}
+.image-producto{
+    width: 100%;
+    margin-bottom: 30px;
+    border-radius: 15px;
+    box-shadow: 0px 13px 29px 4px rgba(0,0,0,0.25);
+}
+.hidden{
+    display: none;
+}
+
+.about-us{
+    width: 500px;
+}
+.about-text{
+    color: #582F26;
+    height: 100vh;
+    font-weight: 500;
+    font-size: 2em;
+
+    text-shadow: 2px 3px 0px #fff, 9px 5px 5px rgba(0,0,0,0.15);
+}
+.about-bootstrap{
+    width: 300px;
+    height: 300px;
+    position: absolute;
+    top:1400px;
+    left: 500px;
+}
+.about-symfony{
+    position: absolute;
+    width: 500px;
+    top:1750px;
+}
+.about-loren{
+    position: absolute;
+    width: 300px;
+    left: 600px;
+    top:700px;
+    border-radius: 15px;
+    box-shadow: 0px 13px 29px 4px rgba(0,0,0,0.25);
+}

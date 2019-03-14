@@ -1,0 +1,68 @@
+{% extends 'FOSUserBundle::layout.html.twig' %}
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block fos_user_content %}
+    <div class="categorias-container">
+        <h2>{{ 'form.categoria'|trans }}</h2>
+        <form action="{{ path('material_index') }}" method="post">
+            <input type="submit" class="btn btn-secondary filter" value="Filter">
+        {% for categoria in categorias %}
+            <li class="tag">
+                <input type="checkbox" name="categorias[]" value="{{ categoria.id }}">
+                {{ categoria.nombre }}
+            </li>
+        {% endfor %}
+            <br>
+
+        </form>
+    </div>
+
+        <div class=" container-products">
+            <h3 class="cabecera">{{ 'form.cabecera'|trans }}</h3>
+            <div class="container">
+                <div class="row">
+    {% for material in materials %}
+                    <div class="col-lg-4 col-md-12 col-sm-12">
+                        <a href="{{ path('material_show', { 'id': material.id }) }}">
+                            <div class="product">
+                                {% if material.imagenes %}
+                                {% set arrayImagenes = material.imagenes|split(',') %}
+                                <img class="material-img" src="{{ asset('images/material/') }}{{ arrayImagenes[0] }}" alt="">
+                                {% else %}
+                                <img class="material-img" src="{{ asset('images/material/apuntes.png') }}" alt="">
+                                {% endif %}
+                                {% if material.usuario == app.user %}
+                                <a href="{{ path('material_edit', { 'id': material.id }) }}">
+                                    <span class="message-link">
+                                        <i class="fa fa-pen"></i>
+                                    </span>
+                                    {% else %}
+                                <a href="{{ path('mensaje_conversacion')}}?user={{ material.usuario.username }}">
+                                    <span class="message-link">
+                                        <i class="fa fa-comments"></i>
+                                    </span>
+                                {% endif %}
+                                </a>
+                                <h3>{{ material.titulo }}{{ material.temas }}</h3>
+                                <p class="descripcion">{{ material.descripcion }}</p>
+                                <div>
+                                    <span class="price">{{ material.precio }}</span>
+                                    <a href="{{ path('profile_id', {'id': material.usuario.id }) }}">
+                                    <span class="user">
+                                        {% if material.usuario.imagen %}
+                                        <img src="{{ asset('images/profiles/') }}{{ material.usuario.imagen }}" alt="" id="user-thumbnail">
+                                        {% else %}
+                                        <img src="{{ asset('images/profiles/profile.png') }}" alt="" id="user-thumbnail">
+                                        {% endif %}
+                                        <span class="user-name">{{ material.usuario }}</span>
+                                    </span>
+                                    </a>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+    {% endfor %}
+                </div>
+                </div>
+            </div>
+{% endblock %}

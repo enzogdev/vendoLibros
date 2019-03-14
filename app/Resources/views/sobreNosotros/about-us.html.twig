@@ -1,0 +1,22 @@
+{% extends 'FOSUserBundle::layout.html.twig' %}
+{% trans_default_domain 'FOSUserBundle' %}
+{% block fos_user_content %}
+
+    <div class="about-us">
+        <p class="about-text">
+            Todos hemos necesitado alguna vez libros de texto y aunque, sobre todo los padres, hemos visto el dinero que cuesta año tras año a nuestras familias, el gasto de papel
+            y materiales para que despues los dejemos en el olvido.
+        </p>
+        <p class="about-text">
+            Mi nombre es Lorenzo Gonzalez Jimenez, estudiante del IES Trassierra y soy el creador de vendoLibros, con el cual pretendo ayudar al ahorro de las familias en materia
+            de educacion dando la posibilidad de un sitio donde poder vender tus apuntes y libros de texto de los que ya no requieres o, por otra parte, comprar los que necesitas
+            <img class="about-loren" src="{{ asset('images/bg/loren.jpg') }}" alt="">
+        </p>
+        <p class="about-text">
+            Para esta aplicacion he utilizado Symfony en su version 3.4, un framework del lenguaje php muy extendido en España, además todo el aspecto visual de la misma corre a
+            a manos de bootstrap junto a un estilo diseñado especificamente para este proyecto
+            <img class="about-bootstrap" src="{{ asset('images/bg/bootstrap.png') }}" alt="">
+            <img class="about-symfony" src="{{ asset('images/bg/symfony.png') }}" alt="">
+        </p>
+    </div>
+{% endblock %}

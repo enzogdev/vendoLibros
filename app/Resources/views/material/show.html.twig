@@ -1,0 +1,49 @@
+{% extends 'FOSUserBundle::layout.html.twig' %}
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block fos_user_content %}
+    <div class="container producto-vista">
+            <div class="imagenes-producto">
+                {% if material.imagenes %}
+                    {% set arrayImagenes = material.imagenes|split(',') %}
+                    {% for imag in arrayImagenes %}
+                        <img class="image-producto" src="{{ asset('images/material/') }}{{ imag }}" alt="">
+                    {% endfor %}
+                {% else %}
+                    <img class="image-producto" src="{{ asset('images/material/apuntes.png') }}" alt="">
+                {% endif %}
+            </div>
+            <div class="contenido-producto">
+                <h1>
+                    {% if material.temas == '' %}
+                        {{ material.titulo }}
+                    {% else %}
+                        {{ material.temas }}
+                    {% endif %}
+                </h1>
+                <table class="table table-borderless">
+                    <tbody>
+                    <tr >
+                        <td colspan="2">{{ material.descripcion}}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row"></th>
+                        <td class="price"> {{ material.precio }}</td>
+                    </tr>
+                    {% if material.isbn != '' %}
+                        <tr>
+                            <th scope="row" style="width: 40px">{{ 'form.isbn'|trans }}:</th>
+                            <td>{{ material.isbn }}</td>
+                        </tr>
+                    {% endif %}
+
+                    </tbody>
+                </table>
+                <a class="back-button btn btn-secondary" href="{{ path('material_index') }}"><i class="fas fa-chevron-left"></i></a>
+                {% if material.usuario.id != app.user.id %}
+                    <a class="back-button btn btn-secondary" href="{{ path('mensaje_conversacion')}}?user={{ material.usuario.username }}"><i class="fa fa-comments"></i></a>
+                {% endif %}
+                </div>
+
+    </div>
+{% endblock %}

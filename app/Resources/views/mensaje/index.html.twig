@@ -1,0 +1,22 @@
+{% extends 'FOSUserBundle::layout.html.twig' %}
+
+{% block fos_user_content %}
+
+<h1>Chats</h1>
+    <ul class="contacts-list">
+    {% for user in usuarios %}
+        <li>
+            <a href="{{ path('mensaje_conversacion')}}?user={{ user.username }}">
+            <div class="contact-chat">
+                {% if user.imagen %}
+                    <img src="{{ asset('images/profiles/') }}{{ user.imagen }}" alt="" id="user-thumbnail">
+                {% else %}
+                    <img src="{{ asset('images/profiles/profile.png') }}" alt="" id="user-thumbnail">
+                {% endif %}
+                <span class="user-name">{{ user.username }}</span>
+            </div>
+            </a>
+        </li>
+    {% endfor %}
+    </ul>
+{% endblock %}

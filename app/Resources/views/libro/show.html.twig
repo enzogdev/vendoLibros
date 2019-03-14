@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Libro</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Isbn</th>
+                <td>{{ libro.isbn }}</td>
+            </tr>
+            <tr>
+                <th>Titulo</th>
+                <td>{{ libro.titulo }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('libro_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('libro_edit', { 'material': libro.material }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

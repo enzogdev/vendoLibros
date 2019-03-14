@@ -1,0 +1,13 @@
+{#{% extends 'FOSUserBundle::layout.html.twig' %}#}
+{% trans_default_domain 'FOSUserBundle' %}
+{% block fos_user_content %}
+
+    {{ form_start(form) }}
+    <div class="mensaje-block btn-group">
+    {{ form_row(form.mensaje,{ 'attr': {'class': "form-control mensaje-box ", 'placeholder': 'form.mensaje'|trans}, 'label':false }) }}
+        <button class="btn btn-secondary mensaje-submit" type="submit" />
+            <i class="fas fa-arrow-right"></i>
+        </button>
+    </div>
+    {{ form_end(form) }}
+{% endblock %}
