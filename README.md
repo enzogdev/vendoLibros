@@ -1,4 +1,4 @@
 symfony
 =======
 
-A Symfony project created on September 27, 2018, 5:19 pm.
+Proyecto en Symfony que consiste en una aplicación de compra-venta de libros y material educativo de segunda mano, gestionando la aplicación los materiales subidos por la comunidad y las conversaciones entre los usuarios.
